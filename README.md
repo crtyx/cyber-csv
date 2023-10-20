@@ -13,8 +13,7 @@ https://www.python.org/downloads/
 
 - Open a CMD/powershell window inside said folder and type py cybercsv.py
 
-- Select your option to convert JSON to CSV or CSV to JSON
-  NOTE ONLY CYBERSOLE JSONS WILL WORK AND ONLY CSVS CONVERTED BY THE SCRIPT WILL WORK!
+- Select your option to convert JSON to CSV or CSV to JSON /////////////// NOTE ONLY CYBERSOLE JSONS WILL WORK AND ONLY CSVS CONVERTED BY THE SCRIPT WILL WORK! ///////////////
 
 - Type the name of your file including format (ie test.json) and then type in the name of the outputted file (ie test.csv)
 
