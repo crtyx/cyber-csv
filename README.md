@@ -23,3 +23,7 @@ https://www.python.org/downloads/
 
   All data is stored locally on your device and nothing is transferred elsewhere obviously.
 
+///////////////
+
+If you wish to use Google Sheets please save the attached CSV;
+https://docs.google.com/spreadsheets/d/1SBLmhjifUqLPPDc63GZ00EWILfmVWAUvaX_qMiyrz_Y/edit?usp=sharing
