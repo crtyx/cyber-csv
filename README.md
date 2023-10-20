@@ -11,7 +11,7 @@ https://www.python.org/downloads/
   
 - Create a folder place your Cybersole 5.x JSON file inside along with the cyber-csv python script.
 
-- Open a CMD/powershell window and type py cybercsv.py
+- Open a CMD/powershell window inside said folder and type py cybercsv.py
 
 - Select your option to convert JSON to CSV or CSV to JSON
   NOTE ONLY CYBERSOLE JSONS WILL WORK AND ONLY CSVS CONVERTED BY THE SCRIPT WILL WORK!
