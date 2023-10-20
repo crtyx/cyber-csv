@@ -128,7 +128,7 @@ def main():
  \______/     |__/    |_______/ |________/|__/  |__/       \______/  \______/     \_/    
                                                                                          
 {Style.RESET_ALL}
-   {Fore.MAGENTA}  CYBERSOLE CSV/JSON CONVERTOR BY CURTY{Style.RESET_ALL}
+   {Fore.MAGENTA}  CYBERSOLE CSV/JSON CONVERTOR BY CURTY (@crtyx_) {Style.RESET_ALL}
 """
 
     print(title)
