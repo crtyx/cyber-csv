@@ -29,6 +29,12 @@ https://www.python.org/downloads/
 
 UPDATE // 
 
-Cybersole added support for CSV import.
-I'd recommend exporting your JSON to CSV via this script if any issues arise and then copying/pasting the data over to the Cybersole 5.x CSV Template; 
-https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing if you need a 100% functioning Cybersole CSV.
+Cybersole added support for CSV import HOWEVER currently this script does not export the CSV into a format that is fully compatible, so your options are;
+
+ 1) Export JSON to CyberCSV CSV format, edit the CSV and then export back to JSON and import.
+ 2) Export JSON to CyberCSV format and then transfer your data to the official Cybersole template (Below)
+
+This script will still be useful to export your JSON to a CSV as Cybersole only supports importing of CSV and not exporting.
+
+Official Cybersole CSV Template:
+https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing
