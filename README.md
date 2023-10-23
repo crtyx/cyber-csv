@@ -13,13 +13,13 @@ https://www.python.org/downloads/
 
   // HOW TO USE //
   
-- Create a folder place your Cybersole 5.x JSON file inside along with the cyber-csv python script.
+- Create a folder place your Cybersole 5.x JSON file inside along with the cybercsv python script (Or download the latest .zip file, from Releases, extract and copy your Cybersole 5.x JSON into that folder)
   
 - Make sure the file is named 'billing.json' and/or your CSV file named 'billing.csv'
 
 - Open a CMD/powershell window inside said folder and type py cybercsv.py
 
-- You make need to install 'colorama' and 'num2words' manually by typing pip install colorama and then pip install num2words
+- You may need to install 'colorama' and 'num2words' manually by typing pip install colorama and then pip install num2words
 
 - Select your option [Note - Only Cybersole JSONs + Only CSVs generated with this script are compatitible]
 
