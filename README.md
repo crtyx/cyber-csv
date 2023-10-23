@@ -25,5 +25,4 @@ https://www.python.org/downloads/
 
 ///////////////
 
-If you wish to use Google Sheets please save the attached CSV;
-https://docs.google.com/spreadsheets/d/1SBLmhjifUqLPPDc63GZ00EWILfmVWAUvaX_qMiyrz_Y/edit?usp=sharing
+If you wish to use Google Sheets please save the attached CSV; https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing
