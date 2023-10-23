@@ -169,28 +169,27 @@ def main():
 
         choice = input("Enter your choice (1/2/3/4/5): ")
 
-        if choice == "[1]":
-            input_csv_file = "billing.csv"
+        if choice == "1":
+            input_csv_file = input("Enter the CSV file name: ")
             output_json_file = "billing.json"
             csv_to_json(input_csv_file, output_json_file)
             print("Conversion from CSV to JSON completed.")
-            input("Press Enter to continue...")
-        elif choice == "[2]":
+            input("Press any key to go back.")
+        elif choice == "2":
             input_json_file = "billing.json"
-            output_csv_file = "billing.csv"
+            output_csv_file = input("Enter the CSV file name: ")
             json_to_csv(input_json_file, output_csv_file)
             print("Conversion from JSON to CSV completed.")
-            input("Press Enter to continue...")
-        elif choice == "[3]":
-            input_csv_file = "billing.csv"
+            input("Press any key to go back.")
+        elif choice == "3":
+            input_csv_file = input("Enter the CSV file name: ")
             export_payment_methods(input_csv_file)
-            print("Exported payment methods to 'payment_methods.csv'.")
-            input("Press Enter to continue...")
-        elif choice == "[4]":
+            print("Payment methods exported to 'payment_methods.csv'.")
+            input("Press any key to go back.")
+        elif choice == "4":
             install_requirements()
-            print("Requirements installed successfully.")
-            input("Press Enter to continue...")
-        elif choice == "[5]":
+            input("Press any key to go back.")
+        elif choice == "5":
             print("Goodbye!")
             break
         else:
