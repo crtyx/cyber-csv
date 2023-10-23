@@ -39,3 +39,10 @@ This script will still be useful to export your JSON to a CSV as Cybersole only 
 
 Official Cybersole CSV Template:
 https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing
+
+--
+
+Example of CSV Export from CyberCSV (You could also edit this example and convert to JSON via CyberCSV
+
+- Make sure you are logged into Google, head to 'FILE' and then 'MAKE A COPY'.
+https://docs.google.com/spreadsheets/d/1sud1BSVl0BUeNQk3_FMpSzF4Qd6uAoemBgxx0T1ZU_w/edit?usp=sharing
