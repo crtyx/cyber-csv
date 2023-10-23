@@ -1,6 +1,7 @@
 ![image](https://github.com/crtyx/cyber-csv/assets/61663707/87a02167-9023-4e4f-b617-f6f66de52d68)
 
 
+# NOTE - THIS BASIC SCRIPT IS IN NO WAY, SHAPE OR FORM AFFILIATED OR ASSOCIATED WITH CYBERSOLE AND IS PROVIDED FOR FREE WITH NO GUARANTEES. 
 
 #cyber-csv
 # A basic python script that converts Cybersole JSON to CSV and vice versa.
