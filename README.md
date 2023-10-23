@@ -1,4 +1,5 @@
-![image](https://github.com/crtyx/cyber-csv/assets/61663707/f9c35831-1856-4c1a-8d53-f3b857b3062f)
+![image](https://github.com/crtyx/cyber-csv/assets/61663707/cc41af25-714a-4527-b379-731d7aead09f)
+
 
 #cyber-csv
 # A basic python script that converts Cybersole JSON to CSV and vice versa.
