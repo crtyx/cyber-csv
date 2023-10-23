@@ -14,7 +14,7 @@ https://www.python.org/downloads/
   
 - Create a folder place your Cybersole 5.x JSON file inside along with the cyber-csv python script.
   
-- Place your JSON inside the folder and make sure its named 'billing.json' and/or your CSV file named 'billing.csv'
+- Make sure the file is named 'billing.json' and/or your CSV file named 'billing.csv'
 
 - Open a CMD/powershell window inside said folder and type py cybercsv.py
 
