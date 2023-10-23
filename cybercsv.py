@@ -170,14 +170,14 @@ def main():
         choice = input("Enter your choice (1/2/3/4/5): ")
 
         if choice == "1":
-            input_csv_file = input("Enter the CSV file name: ")
+            input_csv_file = "billing.csv"
             output_json_file = "billing.json"
             csv_to_json(input_csv_file, output_json_file)
             print("Conversion from CSV to JSON completed.")
             input("Press any key to go back.")
         elif choice == "2":
             input_json_file = "billing.json"
-            output_csv_file = input("Enter the CSV file name: ")
+            output_csv_file = "billing.csv"
             json_to_csv(input_json_file, output_csv_file)
             print("Conversion from JSON to CSV completed.")
             input("Press any key to go back.")
