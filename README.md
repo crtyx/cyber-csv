@@ -1,4 +1,4 @@
-# cyber-csv
+<img width="887" alt="image" src="https://github.com/crtyx/cyber-csv/assets/61663707/12a91267-aa50-4177-b7e6-83717b053505"># cyber-csv
 A basic python script that converts Cybersole JSON to CSV and vice versa.
 
 https://www.python.org/downloads/
@@ -25,4 +25,6 @@ https://www.python.org/downloads/
 
 ///////////////
 
-If you wish to use Google Sheets please save the attached CSV; https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing
+UPDATE // 
+
+Cybersole added support for CSV import. I'd recommend exporting your JSON to CSV via this script and then copying/pasting the data over to the Cybersole 5.x CSV Template; https://docs.google.com/spreadsheets/d/1g0YX_OTldXQ_aqHsIgpW0rC-l3s5IhvvvnX3617wMnk/edit?usp=sharing if you need a 100% functioning Cybersole CSV.
