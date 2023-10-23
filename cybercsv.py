@@ -77,13 +77,8 @@ def json_to_csv(input_json_file, output_csv_file):
 
     with open(output_csv_file, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
-        header = ['Group Name', 'Profile Name', 'Email', 'Phone', 'Different Billing',
-                  'Card Number', 'Card Exp Month', 'Card Exp Year', 'Card CVV',
-                  'Delivery First Name', 'Delivery Last Name', 'Delivery Address 1',
-                  'Delivery Address 2', 'Delivery City', 'Delivery ZIP',
-                  'Delivery Country', 'Delivery State', 'Billing First Name',
-                  'Billing Last Name', 'Billing Address 1', 'Billing Address 2',
-                  'Billing City', 'Billing Zip', 'Billing Country', 'Billing State']
+
+        header = ['Group Name', 'Profile Name', 'Email', 'Phone', 'Card Number', 'Card Exp Month', 'Card Exp Year', 'Card CVV', 'Delivery First Name', 'Delivery Last Name', 'Delivery Address 1', 'Delivery Address 2', 'Delivery City', 'Delivery ZIP', 'Delivery Country', 'Delivery State', 'Different Billing', 'Billing First Name', 'Billing Last Name', 'Billing Address 1', 'Billing Address 2', 'Billing City', 'Billing Zip', 'Billing Country', 'Billing State']
         csv_writer.writerow(header)
 
         if isinstance(data, list):
@@ -91,30 +86,30 @@ def json_to_csv(input_json_file, output_csv_file):
                 for profile_info in profile.get('profiles', []):
                     row = [
                         profile['name'],
-                        profile_info['profile_name'],
-                        profile_info['email'],
-                        profile_info['phone'],
-                        'true' if profile_info['billingDifferent'] else 'false',
-                        profile_info['card']['number'],
-                        profile_info['card']['expMonth'],
-                        profile_info['card']['expYear'],
-                        profile_info['card']['cvv'],
-                        profile_info['delivery']['firstName'],
-                        profile_info['delivery']['lastName'],
-                        profile_info['delivery']['address1'],
-                        profile_info['delivery']['address2'],
-                        profile_info['delivery']['city'],
-                        profile_info['delivery']['zip'],
-                        profile_info['delivery']['country'],
-                        profile_info['delivery']['state'],
-                        profile_info['billing']['firstName'],
-                        profile_info['billing']['lastName'],
-                        profile_info['billing']['address1'],
-                        profile_info['billing']['address2'],
-                        profile_info['billing']['city'],
-                        profile_info['billing']['zip'],
-                        profile_info['billing']['country'],
-                        profile_info['billing']['state']
+                        profile_info.get('name', ''),  
+                        profile_info.get('email', ''),
+                        profile_info.get('phone', ''),
+                        'true' if profile_info.get('billingDifferent') else 'false',
+                        profile_info.get('card', {}).get('number', ''),
+                        profile_info.get('card', {}).get('expMonth', ''),
+                        profile_info.get('card', {}).get('expYear', ''),
+                        profile_info.get('card', {}).get('cvv', ''),
+                        profile_info.get('delivery', {}).get('firstName', ''),
+                        profile_info.get('delivery', {}).get('lastName', ''),
+                        profile_info.get('delivery', {}).get('address1', ''),
+                        profile_info.get('delivery', {}).get('address2', ''),
+                        profile_info.get('delivery', {}).get('city', ''),
+                        profile_info.get('delivery', {}).get('zip', ''),
+                        profile_info.get('delivery', {}).get('country', ''),
+                        profile_info.get('delivery', {}).get('state', ''),
+                        profile_info.get('billing', {}).get('firstName', ''),
+                        profile_info.get('billing', {}).get('lastName', ''),
+                        profile_info.get('billing', {}).get('address1', ''),
+                        profile_info.get('billing', {}).get('address2', ''),
+                        profile_info.get('billing', {}).get('city', ''),
+                        profile_info.get('billing', {}).get('zip', ''),
+                        profile_info.get('billing', {}).get('country', ''),
+                        profile_info.get('billing', {}).get('state', '')
                     ]
                     csv_writer.writerow(row)
 
