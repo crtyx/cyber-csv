@@ -18,6 +18,8 @@ https://www.python.org/downloads/
 
 - Open a CMD/powershell window inside said folder and type py cybercsv.py
 
+- You make need to install 'colorama' and 'num2words' manually by typing pip install colorama and then pip install num2words
+
 - Select your option [Note - Only Cybersole JSONs + Only CSVs generated with this script are compatitible]
 
   The script will then import and convert your Cybersole JSON into a CSV where you can manually edit via RONSEDITOR (Recommended) for convenience. When you are done you can then repeat the steps inside the script to convert your modified CSV back to a functional Cybersole JSON.
