@@ -3,8 +3,10 @@ import csv
 import random
 import string
 from colorama import Fore, Style, init
+from num2words import num2words
 import os
 import subprocess
+import re 
 
 init(autoreset=True)
 
@@ -132,10 +134,52 @@ def export_payment_methods(input_csv_file):
         payment_writer = csv.DictWriter(payment_file, fieldnames=['Card Number', 'Card Exp Month', 'Card Exp Year', 'Card CVV'])
         payment_writer.writeheader()
         payment_writer.writerows(payment_methods)
+        
+        
+def address_modifier(input_csv_file):
+    with open(input_csv_file, 'r', newline='') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        modified_data = []
+
+        for row in csv_reader:
+            address_line1 = row['Delivery Address 1']
+            
+            replacement_patterns = [
+                (r'(\d+)', lambda x: x.group(0) + ' ' + ''.join(random.choices(string.ascii_letters, k=4)) + ' '),
+                (r'\bStreet\b', 'St'),
+                (r'\bRoad\b', 'Rd'),
+                (r'\bAvenue\b', 'Ave'),
+                (r'\bBoulevard\b', 'Blvd'),
+                (r'\bLane\b', 'Ln'),
+                (r'\bDrive\b', 'Dr'),
+                (r'\bCourt\b', 'Ct'),
+                (r'\b(\d)\b', lambda x: num2words(int(x.group(0))))
+            ]
+
+            random.shuffle(replacement_patterns)
+
+            for pattern, repl in replacement_patterns:
+                address_line1 = re.sub(pattern, repl, address_line1)
+                
+            row['Group Name'] = 'MODIFIED ADDRESSES'    
+
+            row['Delivery Address 1'] = address_line1
+            modified_data.append(row)
+
+    output_csv_file = 'modified_addresses.csv'
+    with open(output_csv_file, 'w', newline='') as csv_file:
+        fieldnames = modified_data[0].keys()
+        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        csv_writer.writeheader()
+        csv_writer.writerows(modified_data)
+
+    print(f"Modified addresses saved to '{output_csv_file}' with Group Name 'MODIFIED ADDRESSES'")
 
 
 def install_requirements():
     subprocess.run(['pip', 'install', 'colorama'])
+    subprocess.run(['pip', 'install', 'num2words'])
+
 
 
 def main():
@@ -154,28 +198,31 @@ def main():
    {Fore.MAGENTA}  CYBERSOLE CSV/JSON CONVERTOR BY CURTY // @crtyx_ {Style.RESET_ALL}
 """
 
+
+    print(title)
+    
     while True:
-        print(title)
         print("Select conversion type:")
-        print("1. CSV to JSON")
-        print("2. JSON to CSV")
+        print("1. JSON to CSV")
+        print("2. CSV to JSON")
         print("3. Export payment methods from CSV")
         print("4. Install Requirements")
-        print("5. Exit")
+        print("5. Address Modifier")
+        print("6. Exit")
 
-        choice = input("Enter your choice (1/2/3/4/5): ")
+        choice = input("Enter your choice (1/2/3/4/5/6): ")
 
         if choice == "1":
-            input_csv_file = "billing.csv"
-            output_json_file = "billing.json"
-            csv_to_json(input_csv_file, output_json_file)
-            print("Conversion from CSV to JSON completed.")
-            input("Press any key to go back.")
-        elif choice == "2":
             input_json_file = "billing.json"
             output_csv_file = "billing.csv"
             json_to_csv(input_json_file, output_csv_file)
             print("Conversion from JSON to CSV completed.")
+            input("Press any key to go back.")
+        elif choice == "2":
+            input_csv_file = "billing.csv"
+            output_json_file = "billing.json"
+            csv_to_json(input_csv_file, output_json_file)
+            print("Conversion from CSV to JSON completed.")
             input("Press any key to go back.")
         elif choice == "3":
             input_csv_file = input("Enter the CSV file name: ")
@@ -186,10 +233,14 @@ def main():
             install_requirements()
             input("Press any key to go back.")
         elif choice == "5":
+            input_csv_file = input("Enter the CSV file name: ")
+            address_modifier(input_csv_file)
+            input("Press any key to go back.")
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter '1', '2', '3', '4', or '5'.")
+            print("Invalid choice. Please enter '1', '2', '3', '4', '5', or '6'.")
 
 if __name__ == "__main__":
     main()
