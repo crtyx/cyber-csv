@@ -1,1 +1,2 @@
 colorama
+num2words
