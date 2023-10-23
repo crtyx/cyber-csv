@@ -54,4 +54,4 @@ Example of CSV Export from CyberCSV (You could also edit this example and conver
 - Make sure you are logged into Google, head to 'FILE' and then 'MAKE A COPY'.
 https://docs.google.com/spreadsheets/d/1sud1BSVl0BUeNQk3_FMpSzF4Qd6uAoemBgxx0T1ZU_w/edit?usp=sharing
 
-NOTE: If you input your STATE or COUNTRY incorrectly on the CSV then you will have issues importing. Make sure your country and state is EXACTLY as inputted on Cybersole. I have included a list of countries/states pulled from Cybersole inside the CSV above.
+NOTE: If you input your STATE or COUNTRY incorrectly on the CSV then you will have issues importing. Make sure your country and state is EXACTLY as inputted on Cybersole. I have included a list of countries/states pulled from Cybersole HERE: https://docs.google.com/spreadsheets/d/18-FxBT0bDB1TkMM-yl9bm8nyAgwwgliWsjg97fVj_6M/edit?usp=sharing
