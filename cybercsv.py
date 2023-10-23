@@ -86,14 +86,13 @@ def json_to_csv(input_json_file, output_csv_file):
                 for profile_info in profile.get('profiles', []):
                     row = [
                         profile['name'],
-                        profile_info.get('name', ''),  
+                        profile_info.get('name', ''), 
                         profile_info.get('email', ''),
                         profile_info.get('phone', ''),
-                        'true' if profile_info.get('billingDifferent') else 'false',
-                        profile_info.get('card', {}).get('number', ''),
-                        profile_info.get('card', {}).get('expMonth', ''),
-                        profile_info.get('card', {}).get('expYear', ''),
-                        profile_info.get('card', {}).get('cvv', ''),
+                        profile_info.get('card', {}).get('number', ''), 
+                        profile_info.get('card', {}).get('expMonth', ''),  
+                        profile_info.get('card', {}).get('expYear', ''),  
+                        profile_info.get('card', {}).get('cvv', ''),  
                         profile_info.get('delivery', {}).get('firstName', ''),
                         profile_info.get('delivery', {}).get('lastName', ''),
                         profile_info.get('delivery', {}).get('address1', ''),
@@ -102,6 +101,7 @@ def json_to_csv(input_json_file, output_csv_file):
                         profile_info.get('delivery', {}).get('zip', ''),
                         profile_info.get('delivery', {}).get('country', ''),
                         profile_info.get('delivery', {}).get('state', ''),
+                        'true' if profile_info.get('billingDifferent') else 'false',
                         profile_info.get('billing', {}).get('firstName', ''),
                         profile_info.get('billing', {}).get('lastName', ''),
                         profile_info.get('billing', {}).get('address1', ''),
@@ -112,6 +112,7 @@ def json_to_csv(input_json_file, output_csv_file):
                         profile_info.get('billing', {}).get('state', '')
                     ]
                     csv_writer.writerow(row)
+
 
 
 def export_payment_methods(input_csv_file):
