@@ -3,50 +3,54 @@ import csv
 import random
 import string
 from colorama import Fore, Style, init
+import os
+import subprocess
 
 init(autoreset=True)
 
+
 def generate_random_id():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+
 
 def csv_to_json(input_csv_file, output_json_file):
     with open(input_csv_file, 'r', newline='') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         data = []
-
         profiles_by_name = {}
 
         for row in csv_reader:
             profile = {
-                'name': row['name'],
-                'email': row['profile_email'],
-                'phone': row['profile_phone'],
-                'billingDifferent': row['profile_billingDifferent'] == 'true',
+                'name': row['Group Name'],
+                'profile_name': row['Profile Name'],
+                'email': row['Email'],
+                'phone': row['Phone'],
+                'billingDifferent': row['Different Billing'] == 'true',
                 'card': {
-                    'number': row['profile_card_number'],
-                    'expMonth': row['profile_card_expMonth'],
-                    'expYear': row['profile_card_expYear'],
-                    'cvv': row['profile_card_cvv']
+                    'number': row['Card Number'],
+                    'expMonth': row['Card Exp Month'],
+                    'expYear': row['Card Exp Year'],
+                    'cvv': row['Card CVV']
                 },
                 'delivery': {
-                    'firstName': row['profile_delivery_firstName'],
-                    'lastName': row['profile_delivery_lastName'],
-                    'address1': row['profile_delivery_address1'],
-                    'address2': row['profile_delivery_address2'],
-                    'city': row['profile_delivery_city'],
-                    'zip': row['profile_delivery_zip'],
-                    'country': row['profile_delivery_country'],
-                    'state': row['profile_delivery_state']
+                    'firstName': row['Delivery First Name'],
+                    'lastName': row['Delivery Last Name'],
+                    'address1': row['Delivery Address 1'],
+                    'address2': row['Delivery Address 2'],
+                    'city': row['Delivery City'],
+                    'zip': row['Delivery ZIP'],
+                    'country': row['Delivery Country'],
+                    'state': row['Delivery State']
                 },
                 'billing': {
-                    'firstName': row['profile_billing_firstName'],
-                    'lastName': row['profile_billing_lastName'],
-                    'address1': row['profile_billing_address1'],
-                    'address2': row['profile_billing_address2'],
-                    'city': row['profile_billing_city'],
-                    'zip': row['profile_billing_zip'],
-                    'country': row['profile_billing_country'],
-                    'state': row['profile_billing_state']
+                    'firstName': row['Billing First Name'],
+                    'lastName': row['Billing Last Name'],
+                    'address1': row['Billing Address 1'],
+                    'address2': row['Billing Address 2'],
+                    'city': row['Billing City'],
+                    'zip': row['Billing Zip'],
+                    'country': row['Billing Country'],
+                    'state': row['Billing State']
                 }
             }
 
@@ -66,20 +70,20 @@ def csv_to_json(input_csv_file, output_json_file):
     with open(output_json_file, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
+
 def json_to_csv(input_json_file, output_csv_file):
     with open(input_json_file, 'r') as json_file:
         data = json.load(json_file)
 
     with open(output_csv_file, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
-
-        header = ['name', 'profile_name', 'profile_email', 'profile_phone', 'profile_billingDifferent',
-                  'profile_card_number', 'profile_card_expMonth', 'profile_card_expYear', 'profile_card_cvv',
-                  'profile_delivery_firstName', 'profile_delivery_lastName', 'profile_delivery_address1',
-                  'profile_delivery_address2', 'profile_delivery_city', 'profile_delivery_zip',
-                  'profile_delivery_country', 'profile_delivery_state', 'profile_billing_firstName',
-                  'profile_billing_lastName', 'profile_billing_address1', 'profile_billing_address2',
-                  'profile_billing_city', 'profile_billing_zip', 'profile_billing_country', 'profile_billing_state']
+        header = ['Group Name', 'Profile Name', 'Email', 'Phone', 'Different Billing',
+                  'Card Number', 'Card Exp Month', 'Card Exp Year', 'Card CVV',
+                  'Delivery First Name', 'Delivery Last Name', 'Delivery Address 1',
+                  'Delivery Address 2', 'Delivery City', 'Delivery ZIP',
+                  'Delivery Country', 'Delivery State', 'Billing First Name',
+                  'Billing Last Name', 'Billing Address 1', 'Billing Address 2',
+                  'Billing City', 'Billing Zip', 'Billing Country', 'Billing State']
         csv_writer.writerow(header)
 
         if isinstance(data, list):
@@ -87,7 +91,7 @@ def json_to_csv(input_json_file, output_csv_file):
                 for profile_info in profile.get('profiles', []):
                     row = [
                         profile['name'],
-                        profile_info['name'],
+                        profile_info['profile_name'],
                         profile_info['email'],
                         profile_info['phone'],
                         'true' if profile_info['billingDifferent'] else 'false',
@@ -114,8 +118,31 @@ def json_to_csv(input_json_file, output_csv_file):
                     ]
                     csv_writer.writerow(row)
 
-def main():
 
+def export_payment_methods(input_csv_file):
+    payment_methods = []
+    with open(input_csv_file, 'r', newline='') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            payment_method = {
+                'Card Number': row['Card Number'],
+                'Card Exp Month': row['Card Exp Month'],
+                'Card Exp Year': row['Card Exp Year'],
+                'Card CVV': row['Card CVV']
+            }
+            payment_methods.append(payment_method)
+
+    with open('payment_methods.csv', 'w', newline='') as payment_file:
+        payment_writer = csv.DictWriter(payment_file, fieldnames=['Card Number', 'Card Exp Month', 'Card Exp Year', 'Card CVV'])
+        payment_writer.writeheader()
+        payment_writer.writerows(payment_methods)
+
+
+def install_requirements():
+    subprocess.run(['pip', 'install', 'colorama'])
+
+
+def main():
     title = f"""
 {Fore.GREEN}  ____  _     _ _ _     _            
   /$$$$$$  /$$     /$$ /$$$$$$$  /$$$$$$$$ /$$$$$$$         /$$$$$$   /$$$$$$  /$$    /$$
@@ -128,28 +155,46 @@ def main():
  \______/     |__/    |_______/ |________/|__/  |__/       \______/  \______/     \_/    
                                                                                          
 {Style.RESET_ALL}
-   {Fore.MAGENTA}  CYBERSOLE CSV/JSON CONVERTOR BY CURTY (@crtyx_) {Style.RESET_ALL}
+   {Fore.MAGENTA}  CYBERSOLE CSV/JSON CONVERTOR BY CURTY // @crtyx_ {Style.RESET_ALL}
 """
 
-    print(title)
-    print("Select conversion type:")
-    print("1. CSV to JSON")
-    print("2. JSON to CSV")
+    while True:
+        print(title)
+        print("Select conversion type:")
+        print("1. CSV to JSON")
+        print("2. JSON to CSV")
+        print("3. Export payment methods from CSV")
+        print("4. Install Requirements")
+        print("5. Exit")
 
-    choice = input("Enter your choice (1/2): ")
+        choice = input("Enter your choice (1/2/3/4/5): ")
 
-    if choice == "[1]":
-        input_csv_file = input("Enter the CSV file name: ")
-        output_json_file = input("Enter the JSON file name: ")
-        csv_to_json(input_csv_file, output_json_file)
-        print("Conversion from CSV to JSON completed.")
-    elif choice == "[2]":
-        input_json_file = input("Enter the JSON file name: ")
-        output_csv_file = input("Enter the CSV file name: ")
-        json_to_csv(input_json_file, output_csv_file)
-        print("Conversion from JSON to CSV completed.")
-    else:
-        print("Invalid choice. Please enter '1' or '2'.")
+        if choice == "[1]":
+            input_csv_file = "billing.csv"
+            output_json_file = "billing.json"
+            csv_to_json(input_csv_file, output_json_file)
+            print("Conversion from CSV to JSON completed.")
+            input("Press Enter to continue...")
+        elif choice == "[2]":
+            input_json_file = "billing.json"
+            output_csv_file = "billing.csv"
+            json_to_csv(input_json_file, output_csv_file)
+            print("Conversion from JSON to CSV completed.")
+            input("Press Enter to continue...")
+        elif choice == "[3]":
+            input_csv_file = "billing.csv"
+            export_payment_methods(input_csv_file)
+            print("Exported payment methods to 'payment_methods.csv'.")
+            input("Press Enter to continue...")
+        elif choice == "[4]":
+            install_requirements()
+            print("Requirements installed successfully.")
+            input("Press Enter to continue...")
+        elif choice == "[5]":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter '1', '2', '3', '4', or '5'.")
 
 if __name__ == "__main__":
     main()
