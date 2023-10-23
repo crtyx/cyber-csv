@@ -30,6 +30,11 @@ https://www.python.org/downloads/
 
 ///////////////
 
+- Added option to export payment methods (number, exp, cvv) from a supplied CSV.
+- Added option for basic automated address modifying from a supplied csv.
+
+///////////////
+
 UPDATE // 
 
 Cybersole added support for CSV import HOWEVER currently this script does not export the CSV into a format that is fully compatible, so your options are;
